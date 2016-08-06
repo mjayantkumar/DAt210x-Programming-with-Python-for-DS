@@ -44,7 +44,7 @@ X.how_tall_in_meters = pd.to_numeric(X.how_tall_in_meters, errors = 'raise')
 
 X.body_mass_index = pd.to_numeric(X.body_mass_index, errors = 'raise')
 X = X[X.z4 != '-14420-11-2011 04:50:23.713']
-X2.z4 = pd.to_numeric(X2.z4, errors = 'raise')
+X.z4 = pd.to_numeric(X.z4, errors = 'raise')
 
 #
 # INFO: If you find any problematic records, drop them before calling the
@@ -56,7 +56,8 @@ X2.z4 = pd.to_numeric(X2.z4, errors = 'raise')
 # TODO: Encode your 'y' value as a dummies version of your dataset's "class" column
 #
 # .. your code here ..
-y = pd.get_dummies(X, columns=['class'])
+y = X.loc[:, 'class']
+y = pd.get_dummies(y, columns=['class'])
 
 #
 # TODO: Get rid of the user and class columns
